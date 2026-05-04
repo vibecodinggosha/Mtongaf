@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTONGAF — Make TON Great Again Flag</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep:   #003B9F;
+  --blue:   #006BDF;
+  --mid:    #2F8ED5;
+  --sky:    #4BB5F8;
+  --silver: #C7D2E1;
+  --steel:  #8399B8;
+  --gold:   #BCB067;
+  --gold-d: #8B6B3D;
+  --void:   #060D18;
+  --dark:   #0A1525;
+  --card:   #0F1E2E;
+  --card2:  #142333;
+  --border: rgba(0,107,223,.2);
+  --borderh:rgba(75,181,248,.45);
+  --text:   #EDF1F8;
+  --sub:    #7A94B0;
+  --green:  #3DD68C;
+  --red:    #F0645A;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--void);color:var(--text);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;opacity:.025;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── HEADER ── */
+header{position:fixed;top:0;left:0;right:0;z-index:300;height:58px;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(6,13,24,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;
+  font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:2px;color:var(--text)}
+.logo-box{width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--deep),var(--sky));
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+  box-shadow:0 0 12px rgba(75,181,248,.3)}
+.logo em{color:var(--sky);font-style:normal}
+nav{display:flex;align-items:center;gap:4px}
+nav a{color:var(--sub);text-decoration:none;font-size:13px;font-weight:600;
+  padding:6px 13px;border-radius:7px;transition:all .2s}
+nav a:hover{color:var(--text);background:rgba(0,107,223,.14)}
+.nav-buy{background:linear-gradient(135deg,var(--deep),var(--mid))!important;
+  color:#fff!important;border:1px solid rgba(75,181,248,.3)!important;
+  box-shadow:0 0 14px rgba(0,107,223,.3)}
+.nav-buy:hover{box-shadow:0 0 22px rgba(0,107,223,.55)!important}
+@media(max-width:620px){nav{display:none}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:100px 20px 80px;position:relative;overflow:hidden;text-align:center}
+.hero-fab{position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(-28deg,transparent 0px,transparent 60px,
+    rgba(0,107,223,.035) 60px,rgba(0,107,223,.035) 61px)}
+.hero-glow{position:absolute;top:35%;left:50%;width:720px;height:720px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(0,107,223,.17) 0%,transparent 62%);
+  pointer-events:none;animation:breathe 5s ease-in-out infinite}
+.hero-glow2{position:absolute;bottom:-60px;right:-80px;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(188,176,103,.06) 0%,transparent 65%);
+  pointer-events:none;animation:breathe2 7s 1s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.09)}}
+@keyframes breathe2{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
+.hero-sheen{position:absolute;top:47%;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(151,198,234,.3) 30%,rgba(255,255,255,.5) 50%,rgba(151,198,234,.3) 70%,transparent 100%);
+  animation:sheen 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes sheen{0%,100%{opacity:0;transform:scaleX(.6)}50%{opacity:1;transform:scaleX(1)}}
+
+.sticker-wrap{position:relative;z-index:5;width:260px;height:260px;margin-bottom:4px;
+  filter:drop-shadow(0 0 48px rgba(0,107,223,.55)) drop-shadow(0 2px 16px rgba(188,176,103,.25));
+  animation:flag-wave 3.8s ease-in-out infinite}
+@keyframes flag-wave{
+  0%  {transform:translateY(0px) rotate(-1.5deg)}
+  25% {transform:translateY(-10px) rotate(0.5deg)}
+  50% {transform:translateY(-16px) rotate(1.5deg)}
+  75% {transform:translateY(-8px) rotate(0deg)}
+  100%{transform:translateY(0px) rotate(-1.5deg)}
+}
+#lottie-hero{width:100%;height:100%}
+
+.live-pill{display:inline-flex;align-items:center;gap:7px;
+  background:rgba(0,107,223,.1);border:1px solid rgba(75,181,248,.28);
+  border-radius:100px;padding:5px 15px;font-size:11px;font-weight:700;color:var(--sky);
+  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px;
+  position:relative;z-index:5;animation:fadeD .5s ease both}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);
+  animation:blink 1.3s ease-in-out infinite;box-shadow:0 0 6px var(--green)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes fadeD{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+.hero-title{font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(52px,10.5vw,106px);line-height:.93;letter-spacing:3px;
+  position:relative;z-index:5;margin-bottom:12px;
+  animation:fadeU .7s .1s ease both;text-shadow:0 0 60px rgba(0,107,223,.4)}
+.t-chrome{background:linear-gradient(175deg,#fff 0%,var(--silver) 40%,var(--steel) 75%,var(--silver) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.t-gold{background:linear-gradient(175deg,#E8D88A 0%,var(--gold) 45%,var(--gold-d) 80%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.t-sky{background:linear-gradient(175deg,var(--sky) 0%,var(--mid) 50%,var(--blue) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@keyframes fadeU{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.hero-sub{font-size:clamp(14px,2.1vw,17px);color:var(--sub);max-width:460px;
+  margin:0 auto 36px;line-height:1.68;position:relative;z-index:5;
+  animation:fadeU .7s .2s ease both}
+.hero-sub strong{color:var(--silver)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
+  position:relative;z-index:5;animation:fadeU .7s .3s ease both}
+
+/* ── PRICE BADGE (hero) ── */
+.price-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  position:relative;z-index:5;margin-bottom:18px;animation:fadeU .7s .25s ease both}
+.price-badge{background:rgba(0,107,223,.08);border:1px solid rgba(0,107,223,.22);
+  border-radius:10px;padding:10px 18px;text-align:center}
+.price-badge .pb-label{font-size:10px;font-weight:700;color:var(--sub);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.price-badge .pb-val{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.5px;color:#fff}
+.price-badge .pb-val.green{color:var(--green)}
+.price-badge .pb-val.red{color:var(--red)}
+.price-badge .pb-val.loading{color:var(--sub);font-size:18px}
+
+/* ── BUTTONS ── */
+.btn-blue{display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--deep),var(--mid));color:#fff;
+  border:1px solid rgba(75,181,248,.38);padding:13px 26px;border-radius:10px;
+  font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;
+  text-decoration:none;cursor:pointer;transition:all .25s;
+  box-shadow:0 4px 20px rgba(0,59,159,.45),inset 0 1px 0 rgba(255,255,255,.1)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,59,159,.65)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(199,210,225,.05);color:var(--silver);
+  border:1px solid rgba(199,210,225,.18);padding:13px 26px;border-radius:10px;
+  font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;
+  text-decoration:none;cursor:pointer;transition:all .25s}
+.btn-ghost:hover{background:rgba(199,210,225,.1);border-color:rgba(199,210,225,.38);color:#fff;transform:translateY(-2px)}
+
+.ca-badge{display:inline-flex;align-items:center;gap:10px;
+  margin-top:22px;background:rgba(0,107,223,.07);border:1px solid rgba(0,107,223,.22);
+  border-radius:10px;padding:10px 18px;cursor:pointer;transition:all .2s;
+  position:relative;z-index:5;animation:fadeU .7s .45s ease both}
+.ca-badge:hover{border-color:var(--borderh);background:rgba(0,107,223,.13)}
+.ca-lbl{font-size:10px;font-weight:800;color:var(--sky);letter-spacing:1.2px;text-transform:uppercase}
+.ca-addr{font-family:'Courier New',monospace;font-size:12px;color:var(--sub)}
+.ca-copy{font-size:15px;color:var(--steel);transition:color .2s}
+.ca-badge:hover .ca-copy{color:var(--sky)}
+
+/* ── LIVE METRICS GRID ── */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--dark);border-bottom:1px solid var(--border)}
+@media(max-width:700px){.metrics{grid-template-columns:1fr 1fr}}
+.metric{padding:28px 20px;text-align:center;border-right:1px solid var(--border);
+  position:relative;overflow:hidden;transition:background .2s}
+.metric:last-child{border-right:none}
+.metric:hover{background:rgba(0,107,223,.05)}
+.metric::after{content:'';position:absolute;bottom:0;left:25%;right:25%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:0;transition:opacity .3s}
+.metric:hover::after{opacity:1}
+.metric-val{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.5px;
+  background:linear-gradient(180deg,#fff,var(--silver));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  min-height:41px;display:flex;align-items:center;justify-content:center}
+.metric-val.green{background:linear-gradient(180deg,#5df5a8,var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.metric-val.red{background:linear-gradient(180deg,#f9807a,var(--red));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.metric-lbl{font-size:10px;font-weight:700;color:var(--sub);
+  text-transform:uppercase;letter-spacing:.9px;margin-top:5px}
+.metric-sub{font-size:11px;color:var(--sub);margin-top:2px;opacity:.7}
+.metric-spin{width:22px;height:22px;border:2px solid var(--border);
+  border-top-color:var(--sky);border-radius:50%;
+  animation:spin .8s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── TICKER ── */
+.ticker{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  height:40px;overflow:hidden;display:flex;align-items:center}
+.ticker-t{display:flex;animation:tick 24s linear infinite;white-space:nowrap}
+.ti{display:flex;align-items:center;gap:8px;padding:0 26px;height:40px;
+  font-size:12px;font-weight:700;border-right:1px solid var(--border);color:var(--sub)}
+.ti .nm{color:var(--silver)}.ti .up{color:var(--green)}.ti .dn{color:var(--red)}
+.ti .bl{color:var(--sky)}.ti .gd{color:var(--gold)}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── SECTION ── */
+.sec{padding:88px 24px;max-width:1080px;margin:0 auto}
+.sec-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:var(--sky);
+  background:rgba(75,181,248,.08);border:1px solid rgba(75,181,248,.22);
+  border-radius:4px;padding:4px 11px;margin-bottom:14px}
+.sec-hd{text-align:center;margin-bottom:56px}
+.sec-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,54px);
+  letter-spacing:2px;color:#fff}
+.sec-hd p{color:var(--sub);margin-top:11px;font-size:15px;
+  max-width:460px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+/* ── ABOUT ── */
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:700px){.about-g{grid-template-columns:1fr}}
+.about-txt h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,4.5vw,52px);
+  letter-spacing:2px;line-height:1;margin-bottom:18px}
+.about-txt p{color:var(--sub);font-size:15px;line-height:1.72;margin-bottom:13px}
+.about-txt p strong{color:var(--silver)}
+.about-sticker{display:flex;justify-content:center;align-items:center}
+.about-sticker-inner{width:300px;height:300px;
+  filter:drop-shadow(0 0 40px rgba(0,107,223,.5)) drop-shadow(0 2px 14px rgba(188,176,103,.2));
+  animation:flag-wave 4s .5s ease-in-out infinite}
+#lottie-about{width:100%;height:100%}
+
+/* tg chat */
+.tg-chat{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;box-shadow:0 20px 56px rgba(0,0,0,.5)}
+.chat-hdr{background:rgba(0,107,223,.1);border-bottom:1px solid var(--border);
+  padding:13px 17px;display:flex;align-items:center;gap:11px}
+.chat-av{width:37px;height:37px;border-radius:50%;
+  background:linear-gradient(135deg,var(--deep),var(--sky));
+  display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.chat-nm{font-size:14px;font-weight:700}
+.chat-online{font-size:11px;color:var(--green);margin-top:1px}
+.chat-body{padding:15px;display:flex;flex-direction:column;gap:9px}
+.msg{max-width:82%;padding:9px 13px;font-size:13px;line-height:1.5;border-radius:13px}
+.msg-in{background:var(--card2);border:1px solid var(--border);border-radius:3px 13px 13px 13px;align-self:flex-start}
+.msg-out{background:linear-gradient(135deg,var(--deep),#1b5dc8);
+  border:1px solid rgba(75,181,248,.22);border-radius:13px 3px 13px 13px;align-self:flex-end}
+.msg-t{font-size:10px;opacity:.45;margin-top:3px;text-align:right}
+
+/* ── HOW TO BUY ── */
+.how-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.how-c{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:26px 22px;text-align:center;transition:all .25s}
+.how-c:hover{border-color:rgba(0,107,223,.45);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.4)}
+.how-num{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:9px}
+.how-ico{font-size:34px;margin-bottom:13px}
+.how-c h3{font-size:15px;font-weight:800;color:var(--silver);margin-bottom:7px}
+.how-c p{font-size:13px;color:var(--sub);line-height:1.6}
+
+/* ── CTA ── */
+.cta{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:96px 24px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:700px;height:3px;
+  background:linear-gradient(90deg,transparent,var(--blue),var(--sky),var(--blue),transparent)}
+.cta::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:400px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,7vw,70px);
+  letter-spacing:2px;margin-bottom:13px;color:#fff}
+.cta p{color:var(--sub);font-size:16px;margin-bottom:34px}
+.cta-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{background:var(--void);border-top:1px solid var(--border);padding:44px 24px 28px;text-align:center}
+.foot-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:#fff;margin-bottom:5px}
+.foot-logo em{color:var(--sky);font-style:normal}
+.foot-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:18px 0}
+.foot-links a{color:var(--sub);text-decoration:none;font-size:13px;font-weight:600;transition:color .2s}
+.foot-links a:hover{color:var(--silver)}
+.foot-copy{color:rgba(122,148,176,.35);font-size:11px;letter-spacing:.4px;margin-top:22px;line-height:1.75}
+
+/* stripes */
+.stripe{height:3px;background:linear-gradient(90deg,var(--deep) 0%,var(--blue) 30%,var(--sky) 50%,var(--blue) 70%,var(--deep) 100%)}
+.stripe-gold{height:2px;background:linear-gradient(90deg,transparent,var(--gold-d),var(--gold),var(--gold-d),transparent);opacity:.5}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rev.in{opacity:1;transform:none}
+.rev-l{opacity:0;transform:translateX(-22px);transition:opacity .6s ease,transform .6s ease}
+.rev-l.in{opacity:1;transform:none}
+.rev-r{opacity:0;transform:translateX(22px);transition:opacity .6s ease,transform .6s ease}
+.rev-r.in{opacity:1;transform:none}
+
+/* holders counter */
+.holders-wrap{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
+.holders-count{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.5px;
+  background:linear-gradient(180deg,#fff,var(--silver));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.holders-live{font-size:9px;font-weight:700;color:var(--green);
+  background:rgba(61,214,140,.12);border:1px solid rgba(61,214,140,.3);
+  border-radius:4px;padding:2px 6px;letter-spacing:1px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <a class="logo" href="#"><div class="logo-box">🚩</div>MTONG<em>AF</em></a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#buy">How to Buy</a>
+    <a href="https://dexscreener.com/ton/EQAI1OLy7mBn8QhKObZNAvfM6O17ekSIXGTDJnlMLZjQWVI4" target="_blank" class="nav-buy">Trade ↗</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-fab"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-sheen"></div>
+
+  <div class="live-pill"><div class="dot"></div>Live on TON Blockchain</div>
+  <div class="sticker-wrap"><div id="lottie-hero"></div></div>
+
+  <h1 class="hero-title">
+    <span class="t-chrome">MAKE</span> <span class="t-sky">TON</span><br>
+    <span class="t-gold">GREAT AGAIN</span><br>
+    <span class="t-chrome">FLAG</span>
+  </h1>
+
+  <p class="hero-sub">
+    The <strong>iconic animated flag</strong> of The Open Network,<br>now as a community meme token on TON. 🚩
+  </p>
+
+  <!-- live price badges -->
+  <div class="price-row">
+    <div class="price-badge">
+      <div class="pb-label">Price USD</div>
+      <div class="pb-val loading" id="h-price"><div class="metric-spin"></div></div>
+    </div>
+    <div class="price-badge">
+      <div class="pb-label">24h Change</div>
+      <div class="pb-val loading" id="h-change"><div class="metric-spin"></div></div>
+    </div>
+    <div class="price-badge">
+      <div class="pb-label">Market Cap</div>
+      <div class="pb-val loading" id="h-mcap"><div class="metric-spin"></div></div>
+    </div>
+  </div>
+
+  <div class="hero-btns">
+    <a href="https://dexscreener.com/ton/EQAI1OLy7mBn8QhKObZNAvfM6O17ekSIXGTDJnlMLZjQWVI4" target="_blank" class="btn-blue">🚀 Buy on DEX</a>
+    <a href="https://tonviewer.com/EQAOsNfmcHX5-HO3a60scVYdN-DdHGkFv1vwAS5G3CEhWj61" target="_blank" class="btn-ghost">🔍 View on TonViewer</a>
+  </div>
+
+  <div class="ca-badge" onclick="copyCA(this)">
+    <div>
+      <div class="ca-lbl">Contract Address</div>
+      <div class="ca-addr">EQAOsNfmcHX5-HO3a60scVYdN-DdHGkFv1vwAS5G3CEhWj61</div>
+    </div>
+    <span class="ca-copy">⎘</span>
+  </div>
+</section>
+
+<!-- TICKER (dynamic) -->
+<div class="ticker">
+  <div class="ticker-t" id="tk">
+    <div class="ti"><span class="nm">MTONGAF/TON</span><span id="tk-price" class="up">...</span></div>
+    <div class="ti"><span class="nm">24h Vol</span><span id="tk-vol" class="bl">...</span></div>
+    <div class="ti"><span class="nm">Liquidity</span><span id="tk-liq" class="gd">...</span></div>
+    <div class="ti"><span class="nm">24h Change</span><span id="tk-ch" class="up">...</span></div>
+    <div class="ti"><span class="nm">Txns 24h</span><span id="tk-txn" class="bl">...</span></div>
+    <div class="ti"><span class="nm">Network</span><span class="bl">The Open Network</span></div>
+    <div class="ti"><span class="nm">Tax</span><span class="up">0% / 0%</span></div>
+    <div class="ti"><span class="nm">LP</span><span class="up">🔥 Burned</span></div>
+    <!-- duplicated by JS -->
+  </div>
+</div>
+
+<!-- LIVE METRICS -->
+<div class="metrics rev" id="metrics-row">
+  <div class="metric">
+    <div class="metric-val" id="m-price"><div class="metric-spin"></div></div>
+    <div class="metric-lbl">Price USD</div>
+  </div>
+  <div class="metric">
+    <div class="metric-val" id="m-mcap"><div class="metric-spin"></div></div>
+    <div class="metric-lbl">Market Cap</div>
+  </div>
+  <div class="metric">
+    <div class="metric-val" id="m-vol"><div class="metric-spin"></div></div>
+    <div class="metric-lbl">24h Volume</div>
+  </div>
+  <div class="metric">
+    <div class="holders-wrap">
+      <div class="holders-count" id="m-holders"><div class="metric-spin" style="margin:0"></div></div>
+      <div class="holders-live">LIVE</div>
+    </div>
+    <div class="metric-lbl">Holders</div>
+    <div class="metric-sub" id="m-holders-sub"></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about"><div class="sec">
+  <div class="about-g">
+    <div class="about-txt rev-l">
+      <div class="sec-tag">About the Token</div>
+      <h2><span class="t-sky">MTONGAF</span><br>The Flag Token</h2>
+      <p><strong>Make TON Great Again Flag</strong> — the iconic animated flag of The Open Network, now living on-chain as a community meme token.</p>
+      <p>Our sticker is one of the most recognisable in the TON & Telegram universe. The flag waves in millions of chats — and now it waves on the blockchain too.</p>
+      <p><strong>Fair launch · Zero tax · LP burned.</strong><br>No team, no VCs. Just the community and the flag.</p>
+      <a href="https://dexscreener.com/ton/EQAI1OLy7mBn8QhKObZNAvfM6O17ekSIXGTDJnlMLZjQWVI4" target="_blank" class="btn-blue" style="margin-top:10px;display:inline-flex">Buy MTONGAF →</a>
+    </div>
+    <div class="about-sticker rev-r">
+      <div class="about-sticker-inner"><div id="lottie-about"></div></div>
+    </div>
+  </div>
+</div></div>
+
+<div class="stripe"></div>
+<div class="stripe-gold"></div>
+
+<!-- HOW TO BUY -->
+<div id="buy" style="background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<div class="sec">
+  <div class="sec-hd rev">
+    <div class="sec-tag">How to Buy</div>
+    <h2>GET YOUR <span class="t-chrome">FLAG</span></h2>
+    <p>Buying MTONGAF takes under 2 minutes. No KYC, no banks.</p>
+  </div>
+  <div class="how-g">
+    <div class="how-c rev"><div class="how-num">Step 01</div><div class="how-ico">💎</div><h3>Get TON Wallet</h3><p>Download Tonkeeper, TonHub or use the Telegram Wallet. Ready in seconds.</p></div>
+    <div class="how-c rev"><div class="how-num">Step 02</div><div class="how-ico">🔵</div><h3>Fund with TON</h3><p>Buy TON on Binance, OKX or Bybit, then send to your wallet.</p></div>
+    <div class="how-c rev"><div class="how-num">Step 03</div><div class="how-ico">🔄</div><h3>Swap on DEX</h3><p>Open STON.fi or DeDust, paste the MTONGAF contract and swap your TON.</p></div>
+    <div class="how-c rev"><div class="how-num">Step 04</div><div class="how-ico">🚩</div><h3>Wave the Flag!</h3><p>Welcome! Add the animated sticker pack and wave 🚩 everywhere on Telegram.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:52px" class="rev">
+    <p style="color:var(--sub);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:11px;font-weight:700">Contract Address — TON Blockchain</p>
+    <div class="ca-badge" onclick="copyCA(this)" style="display:inline-flex;padding:13px 22px;gap:14px">
+      <div><div class="ca-lbl">MTONGAF</div><div class="ca-addr" style="font-size:13px">EQAOsNfmcHX5-HO3a60scVYdN-DdHGkFv1vwAS5G3CEhWj61</div></div>
+      <span class="ca-copy" style="font-size:19px">⎘</span>
+    </div>
+    <p style="color:rgba(122,148,176,.4);font-size:11px;margin-top:9px">⚠️ Always verify the contract address before buying. DYOR.</p>
+  </div>
+</div></div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>READY TO<br><span class="t-gold">WAVE THE FLAG?</span> 🚩</h2>
+  <p>Join the TON community. The flag only flies one way — UP.</p>
+  <div class="cta-btns">
+    <a href="https://dexscreener.com/ton/EQAI1OLy7mBn8QhKObZNAvfM6O17ekSIXGTDJnlMLZjQWVI4" target="_blank" class="btn-blue" style="font-size:15px;padding:15px 34px">🚀 Buy MTONGAF Now</a>
+    <a href="https://tonviewer.com/EQAOsNfmcHX5-HO3a60scVYdN-DdHGkFv1vwAS5G3CEhWj61" target="_blank" class="btn-ghost" style="font-size:15px;padding:15px 34px">🔍 TonViewer</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">MTONG<em>AF</em> 🚩</div>
+  <p style="color:var(--sub);font-size:13px">Make TON Great Again Flag</p>
+  <div class="foot-links">
+    <a href="https://dexscreener.com/ton/EQAI1OLy7mBn8QhKObZNAvfM6O17ekSIXGTDJnlMLZjQWVI4" target="_blank">DexScreener</a>
+    <a href="https://tonviewer.com/EQAOsNfmcHX5-HO3a60scVYdN-DdHGkFv1vwAS5G3CEhWj61" target="_blank">TonViewer</a>
+    <a href="https://app.ston.fi/" target="_blank">STON.fi</a>
+    <a href="https://dedust.io/" target="_blank">DeDust</a>
+  </div>
+  <div class="stripe" style="max-width:260px;margin:18px auto;opacity:.35;border-radius:2px"></div>
+  <div class="foot-copy">© 2025 MTONGAF Community Token · Not financial advice · DYOR<br>Built on The Open Network · Zero tax · LP burned forever</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+// ── LOTTIE (raw JSON, no base64) ──
+const ANIM = {"v": "5.5.2", "fr": 60, "ip": 0, "op": 180, "w": 512, "h": 512, "nm": "flag simp", "ddd": 0, "assets": [], "layers": [{"ddd": 0, "ind": 1, "ty": 4, "nm": "body", "sr": 1, "ks": {"r": {"a": 0, "k": 5.226}, "p": {"a": 0, "k": [50.821, 495.59, 0]}, "a": {"a": 0, "k": [-209.087, 425.298, 0]}, "s": {"a": 0, "k": [75, 75, 100]}}, "ao": 0, "shapes": [{"ty": "gr", "it": [{"ind": 0, "ty": "sh", "ks": {"a": 0, "k": {"i": [[0, 82.476], [0, 2.12], [0, -3.498], [0, -3.418], [0, 3.663]], "o": [[0, -77.007], [0, -4.391], [0, 3.498], [0, 3.418], [0, -1.894]], "v": [[-190.584, -1.016], [-193.473, -158.203], [-217.102, -158.203], [-216.818, 180.413], [-193.189, 180.413]], "c": true}}, "nm": "Path 1", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0, 0.784, 0.824, 0.886, 0.249, 0.892, 0.912, 0.943, 0.497, 1, 1, 1, 0.749, 0.871, 0.892, 0.927, 1, 0.741, 0.784, 0.855]}}, "s": {"a": 0, "k": [-215.5, 0]}, "e": {"a": 0, "k": [-201, 0]}, "t": 1, "nm": "gradient_fill_kv045y", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-2.972, 0]}, "a": {"a": 0, "k": [0, 0]}, "s": {"a": 0, "k": [100, 100]}, "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Group 3", "bm": 0, "hd": false}], "ip": 0, "op": 300, "st": 0, "bm": 0}, {"ddd": 0, "ind": 2, "ty": 4, "nm": "flag", "parent": 1, "sr": 1, "ks": {"r": {"a": 0, "k": -0.226}, "p": {"a": 0, "k": [-202.947, 182.013, 0]}, "a": {"a": 0, "k": [-202.973, 138.464, 0]}, "s": {"a": 0, "k": [133.333, 133.333, 100]}}, "ao": 0, "shapes": [{"ty": "gr", "it": [{"ty": "gr", "it": [{"ty": "gr", "it": [{"ind": 0, "ty": "sh", "ks": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [{"i": [[-3.24, 2.053], [-20.373, 13.263], [3.26, 6.605], [6.516, 13.63], [8.497, 3.725], [20.73, 5.113], [4.8, -7.115], [6.904, -10.814], [-4.588, -4.41], [-19.588, -27.318]], "o": [[20.593, -12.914], [4.298, -2.844], [-6.654, -13.563], [-3.688, -8.401], [-19.435, -8.742], [-8.63, -1.817], [-7.174, 10.637], [-3.498, 5.478], [23.952, 23.605], [3.266, 4.672]], "v": [[5.995, 49.707], [67.755, 10.956], [69.545, -5.303], [49.802, -46.096], [29.276, -67.247], [-29.681, -89.392], [-51.307, -80.484], [-72.419, -48.301], [-70.536, -31.381], [-5.706, 44.899]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 15, "s": [{"i": [[-3.499, 3.256], [-23.974, 13.574], [3.476, 6.843], [7.143, 13.648], [8.994, 2.042], [21.871, -4.372], [3.882, -8.169], [6.992, -13.716], [-4.573, -2.58], [-20.633, -18.375]], "o": [[20.549, -18.338], [4.556, -2.589], [-6.996, -13.724], [-3.882, -8.168], [-21.94, -4.384], [-8.994, 2.042], [-7.139, 13.64], [-3.481, 6.854], [24.092, 13.542], [3.507, 3.257]], "v": [[6.471, 12.67], [72.912, -34.962], [74.766, -51.124], [53.57, -92.185], [31.423, -110.858], [-31.436, -110.855], [-53.583, -92.181], [-74.766, -51.144], [-72.892, -34.97], [-6.157, 12.666]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 26, "s": [{"i": [[-3.435, 4.121], [-24.362, 20.317], [3.578, 5.913], [7.391, 11.605], [9.019, -0.463], [20.983, -7.288], [3.888, -8.521], [6.797, -13.834], [-4.397, -2.609], [-21.632, -14.347]], "o": [[20.627, -24.108], [4.688, -3.823], [-7.158, -11.75], [-4.97, -7.804], [-22.194, 1.839], [-8.943, 3.158], [-6.859, 13.804], [-3.345, 6.813], [22.341, 13.201], [3.645, 2.473]], "v": [[6.326, 22.779], [73.521, -43.641], [75.43, -60.303], [53.668, -95.369], [31.168, -107.529], [-32.159, -93.319], [-53.966, -72.648], [-74.437, -31.185], [-72.635, -14.994], [-6.438, 25.772]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 36, "s": [{"i": [[-3.167, 4.999], [-23.817, 27.324], [3.587, 4.803], [7.313, 9.333], [8.646, -3.154], [21.428, -8.851], [4.303, -8.344], [7.007, -12.456], [-4.441, -3.681], [-25.457, -10.721]], "o": [[19.677, -30.437], [4.693, -5.282], [-7.096, -9.5], [-4.89, -6.243], [-21.583, 8.479], [-8.83, 3.14], [-6.879, 12.527], [-3.374, 5.967], [21.603, 17.167], [3.899, 1.505]], "v": [[5.796, 58.446], [70.753, -28.072], [72.665, -45.327], [51.042, -73.571], [29.176, -78.804], [-34.113, -50.342], [-56.702, -30.746], [-77.522, 6.73], [-75.704, 23.369], [-6.906, 64.912]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 48, "s": [{"i": [[-3.521, 4.426], [-21.392, 31.038], [3.417, 3.859], [6.956, 7.808], [8.886, -3.499], [23.535, -3.047], [4.611, -7.359], [7.114, -10.596], [-4.488, -4.868], [-27, -16.94]], "o": [[23.204, -29.725], [4.479, -6.488], [-6.936, -7.826], [-4.792, -5.386], [-22.106, 8.788], [-8.536, 0.52], [-7.056, 10.634], [-3.403, 5.067], [21.911, 23.112], [4.252, 2.541]], "v": [[6.524, 106.269], [72.401, 14.44], [74.225, -3.312], [53.362, -26.742], [31.455, -29.523], [-36.799, -12.931], [-60.417, 0.498], [-81.659, 32.35], [-79.823, 49.475], [-7.557, 109.656]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [{"i": [[-3.499, 3.632], [-20.841, 28.355], [3.476, 4.026], [6.995, 8.456], [8.948, -1.951], [21.758, 3.988], [4.86, -5.94], [7.136, -8.328], [-4.573, -6.246], [-24.61, -25.254]], "o": [[24.339, -25.486], [4.555, -6.241], [-7.141, -8.333], [-4.86, -5.94], [-21.817, 3.997], [-8.948, -1.952], [-6.991, 8.45], [-3.481, 4.032], [20.886, 28.327], [3.507, 3.617]], "v": [[6.471, 130.158], [72.912, 48.185], [74.766, 30.527], [53.57, 5.362], [31.423, -0.617], [-31.436, -0.62], [-53.583, 5.358], [-74.766, 30.507], [-72.892, 48.193], [-6.157, 130.187]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 75, "s": [{"i": [[-3.245, 2.228], [-19.194, 20.139], [3.287, 5.243], [6.437, 11.156], [8.349, 1.764], [19.29, 8.323], [4.792, -5.594], [6.981, -8.306], [-4.591, -6.137], [-21.047, -31.102]], "o": [[22.982, -15.831], [4.333, -4.646], [-6.84, -10.913], [-4.538, -7.862], [-20.675, -4.385], [-8.638, -3.708], [-7.048, 8.249], [-3.482, 4.168], [22.358, 30.178], [3.263, 4.833]], "v": [[6, 109.099], [68.141, 53.805], [69.945, 36.75], [50.042, 3.635], [29.37, -11.361], [-29.696, -33.349], [-51.326, -30.33], [-72.372, -5.505], [-70.452, 12.172], [-5.703, 104.311]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 90, "s": [{"i": [[-3.24, 2.053], [-20.373, 13.263], [3.26, 6.605], [6.516, 13.63], [8.497, 3.725], [20.73, 5.113], [4.8, -7.115], [6.904, -10.814], [-4.588, -4.41], [-19.588, -27.318]], "o": [[20.593, -12.914], [4.298, -2.844], [-6.654, -13.563], [-3.688, -8.401], [-19.435, -8.742], [-8.63, -1.817], [-7.174, 10.637], [-3.498, 5.478], [23.952, 23.605], [3.266, 4.672]], "v": [[5.995, 49.707], [67.755, 10.956], [69.545, -5.303], [49.802, -46.096], [29.276, -67.247], [-29.681, -89.392], [-51.307, -80.484], [-72.419, -48.301], [-70.536, -31.381], [-5.706, 44.899]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 105, "s": [{"i": [[-3.499, 3.256], [-23.974, 13.574], [3.476, 6.843], [7.143, 13.648], [8.994, 2.042], [21.871, -4.372], [3.882, -8.169], [6.992, -13.716], [-4.573, -2.58], [-20.633, -18.375]], "o": [[20.549, -18.338], [4.556, -2.589], [-6.996, -13.724], [-3.882, -8.168], [-21.94, -4.384], [-8.994, 2.042], [-7.139, 13.64], [-3.481, 6.854], [24.092, 13.542], [3.507, 3.257]], "v": [[6.471, 12.67], [72.912, -34.962], [74.766, -51.124], [53.57, -92.185], [31.423, -110.858], [-31.436, -110.855], [-53.583, -92.181], [-74.766, -51.144], [-72.892, -34.97], [-6.157, 12.666]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 116, "s": [{"i": [[-3.435, 4.121], [-24.362, 20.317], [3.578, 5.913], [7.391, 11.605], [9.019, -0.463], [20.983, -7.288], [3.888, -8.521], [6.797, -13.834], [-4.397, -2.609], [-21.632, -14.347]], "o": [[20.627, -24.108], [4.688, -3.823], [-7.158, -11.75], [-4.97, -7.804], [-22.194, 1.839], [-8.943, 3.158], [-6.859, 13.804], [-3.345, 6.813], [22.341, 13.201], [3.645, 2.473]], "v": [[6.326, 22.779], [73.521, -43.641], [75.43, -60.303], [53.668, -95.369], [31.168, -107.529], [-32.159, -93.319], [-53.966, -72.648], [-74.437, -31.185], [-72.635, -14.994], [-6.438, 25.772]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 126, "s": [{"i": [[-3.167, 4.999], [-23.817, 27.324], [3.587, 4.803], [7.313, 9.333], [8.646, -3.154], [21.428, -8.851], [4.303, -8.344], [7.007, -12.456], [-4.441, -3.681], [-25.457, -10.721]], "o": [[19.677, -30.437], [4.693, -5.282], [-7.096, -9.5], [-4.89, -6.243], [-21.583, 8.479], [-8.83, 3.14], [-6.879, 12.527], [-3.374, 5.967], [21.603, 17.167], [3.899, 1.505]], "v": [[5.796, 58.446], [70.753, -28.072], [72.665, -45.327], [51.042, -73.571], [29.176, -78.804], [-34.113, -50.342], [-56.702, -30.746], [-77.522, 6.73], [-75.704, 23.369], [-6.906, 64.912]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 138, "s": [{"i": [[-3.521, 4.426], [-21.392, 31.038], [3.417, 3.859], [6.956, 7.808], [8.886, -3.499], [23.535, -3.047], [4.611, -7.359], [7.114, -10.596], [-4.488, -4.868], [-27, -16.94]], "o": [[23.204, -29.725], [4.479, -6.488], [-6.936, -7.826], [-4.792, -5.386], [-22.106, 8.788], [-8.536, 0.52], [-7.056, 10.634], [-3.403, 5.067], [21.911, 23.112], [4.252, 2.541]], "v": [[6.524, 106.269], [72.401, 14.44], [74.225, -3.312], [53.362, -26.742], [31.455, -29.523], [-36.799, -12.931], [-60.417, 0.498], [-81.659, 32.35], [-79.823, 49.475], [-7.557, 109.656]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 150, "s": [{"i": [[-3.499, 3.632], [-20.841, 28.355], [3.476, 4.026], [6.995, 8.456], [8.948, -1.951], [21.758, 3.988], [4.86, -5.94], [7.136, -8.328], [-4.573, -6.246], [-24.61, -25.254]], "o": [[24.339, -25.486], [4.555, -6.241], [-7.141, -8.333], [-4.86, -5.94], [-21.817, 3.997], [-8.948, -1.952], [-6.991, 8.45], [-3.481, 4.032], [20.886, 28.327], [3.507, 3.617]], "v": [[6.471, 130.158], [72.912, 48.185], [74.766, 30.527], [53.57, 5.362], [31.423, -0.617], [-31.436, -0.62], [-53.583, 5.358], [-74.766, 30.507], [-72.892, 48.193], [-6.157, 130.187]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 165, "s": [{"i": [[-3.245, 2.228], [-19.194, 20.139], [3.287, 5.243], [6.437, 11.156], [8.349, 1.764], [19.29, 8.323], [4.792, -5.594], [6.981, -8.306], [-4.591, -6.137], [-21.047, -31.102]], "o": [[22.982, -15.831], [4.333, -4.646], [-6.84, -10.913], [-4.538, -7.862], [-20.675, -4.385], [-8.638, -3.708], [-7.048, 8.249], [-3.482, 4.168], [22.358, 30.178], [3.263, 4.833]], "v": [[6, 109.099], [68.141, 53.805], [69.945, 36.75], [50.042, 3.635], [29.37, -11.361], [-29.696, -33.349], [-51.326, -30.33], [-72.372, -5.505], [-70.452, 12.172], [-5.703, 104.311]], "c": true}]}, {"t": 180, "s": [{"i": [[-3.24, 2.053], [-20.373, 13.263], [3.26, 6.605], [6.516, 13.63], [8.497, 3.725], [20.73, 5.113], [4.8, -7.115], [6.904, -10.814], [-4.588, -4.41], [-19.588, -27.318]], "o": [[20.593, -12.914], [4.298, -2.844], [-6.654, -13.563], [-3.688, -8.401], [-19.435, -8.742], [-8.63, -1.817], [-7.174, 10.637], [-3.498, 5.478], [23.952, 23.605], [3.266, 4.672]], "v": [[5.995, 49.707], [67.755, 10.956], [69.545, -5.303], [49.802, -46.096], [29.276, -67.247], [-29.681, -89.392], [-51.307, -80.484], [-72.419, -48.301], [-70.536, -31.381], [-5.706, 44.899]], "c": true}]}]}, "nm": "Path 1", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-203, 138.438]}, "a": {"a": 0, "k": [-203, 138.438]}, "s": {"a": 1, "k": [{"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": -5, "s": [103, 103]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 39, "s": [95, 95]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 85, "s": [103, 103]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 130, "s": [95, 95]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 175, "s": [103, 103]}, {"t": 220, "s": [95, 95]}]}, "r": {"a": 1, "k": [{"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": -5, "s": [47.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 39, "s": [42.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 85, "s": [47.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 130, "s": [42.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 175, "s": [47.5]}, {"t": 220, "s": [42.5]}]}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Group 1", "bm": 0, "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-203, 138.438]}, "a": {"a": 0, "k": [-203, 138.438]}, "s": {"a": 1, "k": [{"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": -5, "s": [93, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 39, "s": [110, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 85, "s": [93, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 130, "s": [110, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 175, "s": [93, 100]}, {"t": 220, "s": [110, 100]}]}, "r": {"a": 0, "k": -45}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 90}, "nm": "Transform"}], "nm": "Group 1", "bm": 0, "hd": false}, {"ty": "gs", "o": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 120, "s": [100]}, {"t": 140, "s": [0]}]}, "w": {"a": 0, "k": 8}, "g": {"p": 5, "k": {"a": 0, "k": [0.64, 0.152, 0.356, 0.729, 0.695, 0.576, 0.678, 0.865, 0.75, 1, 1, 1, 0.875, 0.757, 0.802, 0.863, 1, 0.515, 0.604, 0.725, 0.485, 0, 0.562, 0.385, 0.64, 0.77, 0.694, 0.385, 0.748, 0, 0.874, 0.005, 1, 0.01]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [151, -2.811]}]}, "t": 2, "h": {"a": 0, "k": 90.4}, "a": {"a": 0, "k": 37.906}, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_ydig96", "hd": false}, {"ty": "gs", "o": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 30, "s": [100]}, {"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 40, "s": [0]}, {"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 147, "s": [0]}, {"t": 159, "s": [100]}]}, "w": {"a": 0, "k": 8}, "g": {"p": 5, "k": {"a": 0, "k": [0.64, 0.152, 0.356, 0.729, 0.695, 0.576, 0.678, 0.865, 0.75, 1, 1, 1, 0.875, 0.757, 0.802, 0.863, 1, 0.515, 0.604, 0.725, 0.485, 0, 0.562, 0.385, 0.64, 0.77, 0.694, 0.385, 0.748, 0, 0.874, 0.005, 1, 0.01]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [983.189, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 57, "s": [1489.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 146, "s": [1489.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 147, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [983.189, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 237, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-213.799, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 57, "s": [151, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 146, "s": [151, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 147, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [-213.799, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 237, "s": [151, -2.811]}]}, "t": 2, "h": {"a": 0, "k": 83.367}, "a": {"a": 0, "k": -43.592}, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_44yi61", "hd": false}, {"ty": "gs", "o": {"a": 0, "k": 100}, "w": {"a": 0, "k": 8}, "g": {"p": 3, "k": {"a": 0, "k": [0, 0, 0.35, 0.73, 0.496, 0.156, 0.524, 0.82, 0.993, 0.312, 0.697, 0.91]}}, "s": {"a": 0, "k": [17.541, 75.905]}, "e": {"a": 0, "k": [-38.54, -78.954]}, "t": 1, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_2yeesc", "hd": false}, {"ty": "gf", "o": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 120, "s": [100]}, {"t": 140, "s": [0]}]}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0.64, 0.188, 0.557, 0.839, 0.695, 0.594, 0.778, 0.92, 0.75, 1, 1, 1, 0.875, 0.594, 0.778, 0.92, 1, 0.188, 0.557, 0.839, 0.485, 0, 0.562, 0.28, 0.64, 0.56, 0.694, 0.635, 0.748, 0.71, 0.874, 0.36, 1, 0.01]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [151, -2.811]}]}, "t": 2, "h": {"a": 0, "k": 90.4}, "a": {"a": 0, "k": 37.906}, "nm": "gradient_fill_y2puml", "hd": false}, {"ty": "gf", "o": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 30, "s": [100]}, {"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 40, "s": [0]}, {"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 147, "s": [0]}, {"t": 159, "s": [100]}]}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0.64, 0.188, 0.557, 0.839, 0.695, 0.594, 0.778, 0.92, 0.75, 1, 1, 1, 0.875, 0.594, 0.778, 0.92, 1, 0.188, 0.557, 0.839, 0.485, 0, 0.562, 0.28, 0.64, 0.56, 0.694, 0.635, 0.748, 0.71, 0.874, 0.36, 1, 0.01]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [983.189, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 57, "s": [1489.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 146, "s": [1489.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 147, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [983.189, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 237, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-213.799, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 57, "s": [151, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 146, "s": [151, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 147, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [-213.799, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 237, "s": [151, -2.811]}]}, "t": 2, "h": {"a": 0, "k": 83.367}, "a": {"a": 0, "k": -43.592}, "nm": "gradient_fill_y2puml 2", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0, 0, 0.42, 0.875, 0.249, 0, 0.328, 0.751, 0.497, 0, 0.236, 0.627, 0.749, 0, 0.328, 0.751, 1, 0, 0.42, 0.875, 0, 0, 0.161, 0.02, 0.322, 0.04, 0.459, 0.215, 0.595, 0.39, 0.798, 0.195, 1, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-52.3, 25.218], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 47, "s": [196.076, 39.434], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 100, "s": [196.076, 39.434], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 101, "s": [-469.78, 1.322], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [-52.3, 25.218], "to": [0, 0], "ti": [0, 0]}, {"t": 227, "s": [196.076, 39.434]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [199.616, 29.832], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 47, "s": [444.243, 44.001], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 100, "s": [444.243, 44.001], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 101, "s": [-211.564, 6.014], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [199.616, 29.832], "to": [0, 0], "ti": [0, 0]}, {"t": 227, "s": [444.243, 44.001]}]}, "t": 1, "nm": "gradient_fill_26996l", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0, 0, 0.42, 0.875, 0.249, 0, 0.328, 0.751, 0.497, 0, 0.236, 0.627, 0.749, 0, 0.328, 0.751, 1, 0, 0.42, 0.875, 0, 0, 0.161, 0.02, 0.322, 0.04, 0.459, 0.215, 0.595, 0.39, 0.798, 0.195, 1, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-469.78, 1.322], "to": [0, 0], "ti": [0, 0]}, {"t": 126, "s": [196.076, 39.434]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-211.564, 6.014], "to": [0, 0], "ti": [0, 0]}, {"t": 126, "s": [444.243, 44.001]}]}, "t": 1, "nm": "gradient_fill_26996l 2", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 3, "k": {"a": 0, "k": [0, 0.133, 0.647, 0.969, 0.5, 0.296, 0.712, 0.976, 1, 0.459, 0.776, 0.984]}}, "s": {"a": 0, "k": [-1.197, 74.655]}, "e": {"a": 0, "k": [-10.681, -64.704]}, "t": 1, "nm": "gradient_fill_92muan", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 2, "k": {"a": 0, "k": [0, 1, 1, 1, 1, 0, 0, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [151, -2.811]}]}, "t": 1, "nm": "gradient_fill_dxaexu", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 2, "k": {"a": 0, "k": [0, 1, 1, 1, 1, 0, 0, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [151, -2.811]}]}, "t": 1, "nm": "gradient_fill_v8ymqb", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 2, "k": {"a": 0, "k": [0, 1, 1, 1, 1, 0, 0, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [1489.855, 67.264]}]}, "e": {"a": 0, "k": [100, 0]}, "t": 1, "nm": "gradient_fill_1o34qx", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 2, "k": {"a": 0, "k": [0, 1, 1, 1, 1, 0, 0, 0]}}, "s": {"a": 0, "k": [0, 0]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [151, -2.811]}]}, "t": 1, "nm": "gradient_fill_bmj46w", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 2, "k": {"a": 0, "k": [0, 1, 1, 1, 1, 0, 0, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [151, -2.811]}]}, "t": 1, "nm": "gradient_fill_eju3n3", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-0.126, 18.748]}, "a": {"a": 0, "k": [-0.126, 18.748]}, "s": {"a": 0, "k": [100, 100]}, "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Group 5", "bm": 0, "hd": false}, {"ty": "gr", "it": [{"ty": "gr", "it": [{"ty": "gr", "it": [{"ind": 0, "ty": "sh", "ks": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [{"i": [[-7.411, -84.465], [69.593, 27.799], [62.513, -33.107], [0, 84.572], [-68.608, -27.393], [-76.483, 26.669]], "o": [[-76.389, 26.569], [-68.57, -27.39], [0, -84.572], [62.556, -33.13], [69.7, 27.829], [-7.649, 84.458]], "v": [[202.973, 144.604], [-0.011, 111.701], [-202.973, 138.462], [-202.973, -115.254], [0.041, -141.993], [202.973, -109.112]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 15, "s": [{"i": [[-6.035, -84.507], [72.309, 0], [72.232, -4.237], [0, 84.572], [-72.354, 0], [-72.177, -4.234]], "o": [[-72.177, -4.234], [-72.354, 0], [0, -84.572], [72.232, -4.237], [72.309, 0], [-6.687, 84.488]], "v": [[202.973, 138.462], [0, 77.107], [-202.973, 138.462], [-202.973, -115.254], [0, -176.609], [202.973, -115.254]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 26, "s": [{"i": [[-5.342, -84.516], [70.245, -15.973], [75.736, 13.437], [0, 84.572], [-70.475, 16.025], [-61.058, -32.761]], "o": [[-61.058, -32.761], [-70.475, 16.025], [0, -84.572], [75.736, 13.437], [70.245, -15.973], [-6.385, 84.488]], "v": [[202.973, 133.311], [0, 88.64], [-202.973, 138.462], [-202.973, -115.254], [0, -165.076], [202.973, -120.405]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 36, "s": [{"i": [[-5.353, -84.513], [66.233, -32.317], [72.743, 23.844], [0, 84.572], [-68.863, 33.6], [-64.398, -40.262]], "o": [[-64.398, -40.262], [-68.863, 33.6], [0, -84.572], [72.743, 23.844], [66.233, -32.317], [-6.524, 84.482]], "v": [[202.973, 128.16], [-0.568, 126.174], [-202.973, 138.462], [-202.973, -115.254], [-0.568, -127.542], [202.973, -125.557]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 48, "s": [{"i": [[-6.09, -84.48], [69.859, -17.093], [66.156, 31.744], [0, 84.572], [-73.437, 17.968], [-74.108, -32.963]], "o": [[-74.108, -32.963], [-73.437, 17.968], [0, -84.572], [66.156, 31.744], [69.859, -17.093], [-7.321, 84.443]], "v": [[202.973, 133.311], [-0.547, 172.507], [-202.973, 138.462], [-202.973, -115.254], [-0.547, -81.21], [202.973, -120.405]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [{"i": [[-6.038, -84.507], [71.629, 0], [71.567, 3.849], [0, 84.572], [-71.668, 0], [-71.518, 3.847]], "o": [[-71.518, 3.847], [-71.668, 0], [0, -84.572], [71.567, 3.849], [71.629, 0], [-6.683, 84.489]], "v": [[202.973, 138.462], [0, 194.716], [-202.973, 138.462], [-202.973, -115.254], [0, -59], [202.973, -115.254]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 75, "s": [{"i": [[-7.34, -84.463], [70.348, 28.001], [72.29, -26.784], [0, 84.572], [-66.122, -26.281], [-64.555, 29.837]], "o": [[-64.237, 32.347], [-66.582, -26.502], [0, -84.572], [71.528, -29.996], [70.039, 27.838], [-7.456, 84.46]], "v": [[202.973, 141.533], [-0.008, 171.164], [-202.973, 138.462], [-202.973, -115.254], [0.042, -82.536], [202.973, -112.183]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 90, "s": [{"i": [[-7.411, -84.465], [69.593, 27.799], [62.513, -33.107], [0, 84.572], [-68.608, -27.393], [-76.483, 26.669]], "o": [[-76.389, 26.569], [-68.57, -27.39], [0, -84.572], [62.556, -33.13], [69.7, 27.829], [-7.649, 84.458]], "v": [[202.973, 144.604], [-0.011, 111.701], [-202.973, 138.462], [-202.973, -115.254], [0.041, -141.993], [202.973, -109.112]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 105, "s": [{"i": [[-6.035, -84.507], [72.309, 0], [72.232, -4.237], [0, 84.572], [-72.354, 0], [-72.177, -4.234]], "o": [[-72.177, -4.234], [-72.354, 0], [0, -84.572], [72.232, -4.237], [72.309, 0], [-6.687, 84.488]], "v": [[202.973, 138.462], [0, 77.107], [-202.973, 138.462], [-202.973, -115.254], [0, -176.609], [202.973, -115.254]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 116, "s": [{"i": [[-5.342, -84.516], [70.245, -15.973], [75.736, 13.437], [0, 84.572], [-70.475, 16.025], [-61.058, -32.761]], "o": [[-61.058, -32.761], [-70.475, 16.025], [0, -84.572], [75.736, 13.437], [70.245, -15.973], [-6.385, 84.488]], "v": [[202.973, 133.311], [0, 88.64], [-202.973, 138.462], [-202.973, -115.254], [0, -165.076], [202.973, -120.405]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 126, "s": [{"i": [[-5.353, -84.513], [66.233, -32.317], [72.743, 23.844], [0, 84.572], [-68.863, 33.6], [-64.398, -40.262]], "o": [[-64.398, -40.262], [-68.863, 33.6], [0, -84.572], [72.743, 23.844], [66.233, -32.317], [-6.524, 84.482]], "v": [[202.973, 128.16], [-0.568, 126.174], [-202.973, 138.462], [-202.973, -115.254], [-0.568, -127.542], [202.973, -125.557]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 138, "s": [{"i": [[-6.09, -84.48], [69.859, -17.093], [66.156, 31.744], [0, 84.572], [-73.437, 17.968], [-74.108, -32.963]], "o": [[-74.108, -32.963], [-73.437, 17.968], [0, -84.572], [66.156, 31.744], [69.859, -17.093], [-7.321, 84.443]], "v": [[202.973, 133.311], [-0.547, 172.507], [-202.973, 138.462], [-202.973, -115.254], [-0.547, -81.21], [202.973, -120.405]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 150, "s": [{"i": [[-6.038, -84.507], [71.629, 0], [71.567, 3.849], [0, 84.572], [-71.668, 0], [-71.518, 3.847]], "o": [[-71.518, 3.847], [-71.668, 0], [0, -84.572], [71.567, 3.849], [71.629, 0], [-6.683, 84.489]], "v": [[202.973, 138.462], [0, 194.716], [-202.973, 138.462], [-202.973, -115.254], [0, -59], [202.973, -115.254]], "c": true}]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 165, "s": [{"i": [[-7.34, -84.463], [70.348, 28.001], [72.29, -26.784], [0, 84.572], [-66.122, -26.281], [-64.555, 29.837]], "o": [[-64.237, 32.347], [-66.582, -26.502], [0, -84.572], [71.528, -29.996], [70.039, 27.838], [-7.456, 84.46]], "v": [[202.973, 141.533], [-0.008, 171.164], [-202.973, 138.462], [-202.973, -115.254], [0.042, -82.536], [202.973, -112.183]], "c": true}]}, {"t": 180, "s": [{"i": [[-7.411, -84.465], [69.593, 27.799], [62.513, -33.107], [0, 84.572], [-68.608, -27.393], [-76.483, 26.669]], "o": [[-76.389, 26.569], [-68.57, -27.39], [0, -84.572], [62.556, -33.13], [69.7, 27.829], [-7.649, 84.458]], "v": [[202.973, 144.604], [-0.011, 111.701], [-202.973, 138.462], [-202.973, -115.254], [0.041, -141.993], [202.973, -109.112]], "c": true}]}]}, "nm": "Path 1", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-203, 138.438]}, "a": {"a": 0, "k": [-203, 138.438]}, "s": {"a": 1, "k": [{"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": -5, "s": [103, 103]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 39, "s": [95, 95]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 85, "s": [103, 103]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 130, "s": [95, 95]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 175, "s": [103, 103]}, {"t": 220, "s": [95, 95]}]}, "r": {"a": 1, "k": [{"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": -5, "s": [47.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 39, "s": [42.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 85, "s": [47.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 130, "s": [42.5]}, {"i": {"x": [0.667], "y": [1]}, "o": {"x": [0.333], "y": [0]}, "t": 175, "s": [47.5]}, {"t": 220, "s": [42.5]}]}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Group 1", "bm": 0, "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-203, 138.438]}, "a": {"a": 0, "k": [-203, 138.438]}, "s": {"a": 1, "k": [{"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": -5, "s": [93, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 39, "s": [110, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 85, "s": [93, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 130, "s": [110, 100]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 175, "s": [93, 100]}, {"t": 220, "s": [110, 100]}]}, "r": {"a": 0, "k": -45}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 90}, "nm": "Transform"}], "nm": "Group 1", "bm": 0, "hd": false}, {"ty": "gs", "o": {"a": 0, "k": 100}, "w": {"a": 0, "k": 8}, "g": {"p": 3, "k": {"a": 0, "k": [0, 0.466, 0.544, 0.66, 0.496, 0.56, 0.637, 0.75, 0.993, 0.653, 0.729, 0.84]}}, "s": {"a": 0, "k": [11, 151]}, "e": {"a": 0, "k": [7, -156]}, "t": 1, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_xmmhaf", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 3, "k": {"a": 0, "k": [0, 0.745, 0.788, 0.859, 0.5, 0.745, 0.788, 0.859, 1, 0.745, 0.788, 0.859, 0, 1, 0.5, 0.5, 1, 0]}}, "s": {"a": 0, "k": [-197.37, -113.229]}, "e": {"a": 0, "k": [-185.894, -113.511]}, "t": 1, "nm": "gradient_fill_nbxwka", "hd": false}, {"ty": "gf", "o": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 120, "s": [100]}, {"t": 140, "s": [0]}]}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0.64, 0.514, 0.604, 0.725, 0.695, 0.757, 0.802, 0.863, 0.75, 1, 1, 1, 0.875, 0.757, 0.802, 0.863, 1, 0.515, 0.604, 0.725, 0.485, 0, 0.562, 0.13, 0.64, 0.26, 0.694, 0.28, 0.748, 0.3, 0.874, 0.155, 1, 0.01]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 60, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 150, "s": [151, -2.811]}]}, "t": 2, "h": {"a": 0, "k": 90.4}, "a": {"a": 0, "k": 37.906}, "nm": "gradient_fill_y2puml", "hd": false}, {"ty": "gf", "o": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 30, "s": [100]}, {"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 40, "s": [0]}, {"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 147, "s": [0]}, {"t": 159, "s": [100]}]}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0.64, 0.514, 0.604, 0.725, 0.695, 0.757, 0.802, 0.863, 0.75, 1, 1, 1, 0.875, 0.757, 0.802, 0.863, 1, 0.515, 0.604, 0.725, 0.485, 0, 0.562, 0.13, 0.64, 0.26, 0.694, 0.28, 0.748, 0.3, 0.874, 0.155, 1, 0.01]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [983.189, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 57, "s": [1489.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 146, "s": [1489.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 147, "s": [689.855, 67.264], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [983.189, 67.264], "to": [0, 0], "ti": [0, 0]}, {"t": 237, "s": [1489.855, 67.264]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-213.799, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 57, "s": [151, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 146, "s": [151, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 147, "s": [-425, -2.811], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [-213.799, -2.811], "to": [0, 0], "ti": [0, 0]}, {"t": 237, "s": [151, -2.811]}]}, "t": 2, "h": {"a": 0, "k": 83.367}, "a": {"a": 0, "k": -43.592}, "nm": "gradient_fill_y2puml 2", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 3, "k": {"a": 0, "k": [0, 0.965, 0.965, 1, 0.5, 0.92, 0.929, 0.971, 1, 0.875, 0.894, 0.941, 0, 1, 0.5, 0.5, 1, 0]}}, "s": {"a": 0, "k": [28.02, -112.093]}, "e": {"a": 0, "k": [51.323, 139.923]}, "t": 1, "nm": "gradient_fill_2eep9r", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0, 0.514, 0.604, 0.725, 0.25, 0.514, 0.604, 0.725, 0.5, 0.514, 0.604, 0.725, 0.75, 0.514, 0.604, 0.725, 1, 0.514, 0.604, 0.725, 0, 0, 0.161, 0.02, 0.322, 0.04, 0.459, 0.17, 0.595, 0.3, 0.798, 0.15, 1, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-52.3, 25.218], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 47, "s": [196.076, 39.434], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 100, "s": [196.076, 39.434], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 101, "s": [-469.78, 1.322], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [-52.3, 25.218], "to": [0, 0], "ti": [0, 0]}, {"t": 227, "s": [196.076, 39.434]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [199.616, 29.832], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 47, "s": [444.243, 44.001], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 100, "s": [444.243, 44.001], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 101, "s": [-211.564, 6.014], "to": [0, 0], "ti": [0, 0]}, {"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 180, "s": [199.616, 29.832], "to": [0, 0], "ti": [0, 0]}, {"t": 227, "s": [444.243, 44.001]}]}, "t": 1, "nm": "gradient_fill_26996l", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0, 0.514, 0.604, 0.725, 0.25, 0.514, 0.604, 0.725, 0.5, 0.514, 0.604, 0.725, 0.75, 0.514, 0.604, 0.725, 1, 0.514, 0.604, 0.725, 0, 0, 0.161, 0.02, 0.322, 0.04, 0.459, 0.17, 0.595, 0.3, 0.798, 0.15, 1, 0]}}, "s": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-469.78, 1.322], "to": [0, 0], "ti": [0, 0]}, {"t": 126, "s": [196.076, 39.434]}]}, "e": {"a": 1, "k": [{"i": {"x": 0.833, "y": 0.833}, "o": {"x": 0.167, "y": 0.167}, "t": 0, "s": [-211.564, 6.014], "to": [0, 0], "ti": [0, 0]}, {"t": 126, "s": [444.243, 44.001]}]}, "t": 1, "nm": "gradient_fill_26996l 2", "hd": false}, {"ty": "fl", "c": {"a": 0, "k": [0.874740481377, 0.893498837948, 0.941176474094, 1]}, "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "nm": "Fill 1", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-0.126, 18.748]}, "a": {"a": 0, "k": [-0.126, 18.748]}, "s": {"a": 0, "k": [100, 100]}, "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Group 4", "bm": 0, "hd": false}], "ip": 0, "op": 300, "st": 0, "bm": 0}, {"ddd": 0, "ind": 3, "ty": 4, "nm": "body 2", "parent": 1, "sr": 1, "ks": {"p": {"a": 0, "k": [-202.343, 176.985, 0]}, "a": {"a": 0, "k": [-202.343, 176.985, 0]}}, "ao": 0, "shapes": [{"ty": "gr", "it": [{"ind": 0, "ty": "sh", "ks": {"a": 0, "k": {"i": [[0, 0], [0, 0]], "o": [[0, 0], [0, 0]], "v": [[-208.054, 194.956], [-207.322, 420.884]], "c": false}}, "nm": "Path 1", "hd": false}, {"ty": "gs", "o": {"a": 0, "k": 100}, "w": {"a": 0, "k": 8}, "g": {"p": 5, "k": {"a": 0, "k": [0, 0.741, 0.663, 0.404, 0.253, 0.835, 0.804, 0.684, 0.505, 0.929, 0.945, 0.965, 0.749, 0.835, 0.804, 0.684, 0.993, 0.741, 0.663, 0.404, 0, 0, 0.125, 0.5, 0.25, 1, 0.38, 1, 0.51, 1, 0.754, 0.5, 0.998, 0]}}, "s": {"a": 0, "k": [-210.604, 196.859]}, "e": {"a": 0, "k": [-208.583, 257.74]}, "t": 1, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_6hvy97", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [0, 0]}, "a": {"a": 0, "k": [0, 0]}, "s": {"a": 0, "k": [101.506, 99.291]}, "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 52}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Shape 1", "bm": 0, "hd": false}, {"ty": "gr", "it": [{"d": 1, "ty": "el", "s": {"a": 0, "k": [49.43, 49.43]}, "p": {"a": 0, "k": [0, 0]}, "nm": "Ellipse Path 1", "hd": false}, {"ty": "gs", "o": {"a": 0, "k": 100}, "w": {"a": 0, "k": 10.667}, "g": {"p": 3, "k": {"a": 0, "k": [0, 0.65, 0.415, 0.421, 0.495, 0.55, 0.272, 0.279, 0.99, 0.451, 0.129, 0.137]}}, "s": {"a": 0, "k": [-14.343, -14.085]}, "e": {"a": 0, "k": [13.513, 9.584]}, "t": 2, "h": {"a": 0, "k": 0}, "a": {"a": 0, "k": 0}, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_a8hdi9", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 7, "k": {"a": 0, "k": [0, 1, 0.569, 0.569, 0.192, 0.863, 0.492, 0.467, 0.385, 0.725, 0.416, 0.365, 0.542, 0.725, 0.371, 0.313, 0.7, 0.725, 0.327, 0.262, 0.85, 0.725, 0.451, 0.405, 1, 0.725, 0.574, 0.549]}}, "s": {"a": 0, "k": [-11.17, -10.065]}, "e": {"a": 0, "k": [10.822, 13.323]}, "t": 2, "h": {"a": 0, "k": 0}, "a": {"a": 0, "k": 0}, "nm": "gradient_fill_pkv6li", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-210.147, -202.666]}, "a": {"a": 0, "k": [0, 0]}, "s": {"a": 0, "k": [100, 100]}, "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Ellipse 2", "bm": 0, "hd": false}, {"ty": "gr", "it": [{"ind": 0, "ty": "sh", "ks": {"a": 0, "k": {"i": [[0, 82.476], [0, 2.12], [0, -3.498], [0, -3.418], [0, 3.663]], "o": [[0, -77.007], [0, -4.391], [0, 3.498], [0, 3.418], [0, -1.894]], "v": [[-190.584, -1.016], [-193.473, -158.203], [-217.102, -158.203], [-216.818, 180.413], [-193.189, 180.413]], "c": true}}, "nm": "Path 1", "hd": false}, {"ty": "gs", "o": {"a": 0, "k": 100}, "w": {"a": 0, "k": 21.333}, "g": {"p": 3, "k": {"a": 0, "k": [0, 0.466, 0.544, 0.66, 0.496, 0.56, 0.637, 0.75, 0.993, 0.653, 0.729, 0.84]}}, "s": {"a": 0, "k": [11, 151]}, "e": {"a": 0, "k": [7, -156]}, "t": 1, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_xmmhaf", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-2.972, 0]}, "a": {"a": 0, "k": [0, 0]}, "s": {"a": 0, "k": [100, 100]}, "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Group 4", "bm": 0, "hd": false}, {"ty": "gr", "it": [{"ind": 0, "ty": "sh", "ks": {"a": 0, "k": {"i": [[0, 0], [0.136, -7.632], [0.167, 7.177], [0, 0]], "o": [[0, 0], [-0.136, 7.632], [-0.167, -7.177], [0, 0]], "v": [[14.75, -57.415], [15.074, 557.167], [-8.683, 557.082], [-9.007, -57.5]], "c": true}}, "nm": "Path 1", "hd": false}, {"ty": "gs", "o": {"a": 0, "k": 100}, "w": {"a": 0, "k": 10.667}, "g": {"p": 5, "k": {"a": 0, "k": [0, 0.451, 0.129, 0.137, 0.338, 0.51, 0.212, 0.22, 0.675, 0.569, 0.294, 0.302, 0.833, 0.51, 0.212, 0.22, 0.99, 0.451, 0.129, 0.137]}}, "s": {"a": 0, "k": [2.227, 426.905]}, "e": {"a": 0, "k": [1.246, 310.954]}, "t": 1, "lc": 2, "lj": 2, "bm": 0, "nm": "gradient_stroke_8loiij", "hd": false}, {"ty": "gf", "o": {"a": 0, "k": 100}, "r": 1, "bm": 0, "g": {"p": 5, "k": {"a": 0, "k": [0, 0.725, 0.416, 0.365, 0.195, 0.725, 0.485, 0.446, 0.39, 0.725, 0.554, 0.526, 0.695, 0.725, 0.419, 0.368, 1, 0.725, 0.283, 0.211]}}, "s": {"a": 0, "k": [-8.128, 364.924]}, "e": {"a": 0, "k": [13.891, 365.027]}, "t": 1, "nm": "gradient_fill_qa7lig", "hd": false}, {"ty": "tr", "p": {"a": 0, "k": [-212.806, -125.585]}, "a": {"a": 0, "k": [0, 0]}, "s": {"a": 0, "k": [100, 100]}, "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}], "nm": "Rectangle 1", "bm": 0, "hd": false}], "ip": 0, "op": 300, "st": 0, "bm": 0}]};
+lottie.loadAnimation({container:document.getElementById('lottie-hero'),renderer:'svg',loop:true,autoplay:true,animationData:JSON.parse(JSON.stringify(ANIM))});
+lottie.loadAnimation({container:document.getElementById('lottie-about'),renderer:'svg',loop:true,autoplay:true,animationData:JSON.parse(JSON.stringify(ANIM))});
+
+// ── HELPERS ──
+function fmt(n, digits=2) {
+  if(n===null||n===undefined||isNaN(n)) return '—';
+  if(n>=1e9) return '$'+(n/1e9).toFixed(2)+'B';
+  if(n>=1e6) return '$'+(n/1e6).toFixed(2)+'M';
+  if(n>=1e3) return '$'+(n/1e3).toFixed(1)+'K';
+  return '$'+parseFloat(n).toFixed(digits);
+}
+function fmtPrice(p) {
+  if(!p) return '—';
+  const n = parseFloat(p);
+  if(n < 0.000001) return '$'+n.toExponential(3);
+  if(n < 0.001) return '$'+n.toFixed(8);
+  if(n < 1) return '$'+n.toFixed(6);
+  return '$'+n.toFixed(4);
+}
+function fmtNum(n) {
+  if(n===null||n===undefined) return '—';
+  return Number(n).toLocaleString();
+}
+
+// ── DEXSCREENER ──
+const PAIR = 'EQAI1OLy7mBn8QhKObZNAvfM6O17ekSIXGTDJnlMLZjQWVI4';
+async function loadDex() {
+  try {
+    const r = await fetch(`https://api.dexscreener.com/latest/dex/pairs/ton/${PAIR}`);
+    const d = await r.json();
+    const p = d.pairs && d.pairs[0];
+    if(!p) return;
+
+    const price = fmtPrice(p.priceUsd);
+    const ch24 = p.priceChange?.h24;
+    const chSign = ch24 >= 0 ? '+' : '';
+    const chClass = ch24 >= 0 ? 'green' : 'red';
+    const mcap = fmt(p.marketCap || p.fdv);
+    const vol24 = fmt(p.volume?.h24);
+    const liq = fmt(p.liquidity?.usd);
+    const txns = p.txns?.h24 ? (p.txns.h24.buys + p.txns.h24.sells) : null;
+
+    // hero badges
+    document.getElementById('h-price').className = 'pb-val';
+    document.getElementById('h-price').textContent = price;
+    document.getElementById('h-change').className = 'pb-val ' + chClass;
+    document.getElementById('h-change').textContent = ch24 != null ? chSign+ch24.toFixed(2)+'%' : '—';
+    document.getElementById('h-mcap').className = 'pb-val';
+    document.getElementById('h-mcap').textContent = mcap;
+
+    // metrics row
+    document.getElementById('m-price').className = 'metric-val';
+    document.getElementById('m-price').textContent = price;
+    document.getElementById('m-mcap').className = 'metric-val';
+    document.getElementById('m-mcap').textContent = mcap;
+    document.getElementById('m-vol').className = 'metric-val';
+    document.getElementById('m-vol').textContent = vol24;
+
+    // ticker
+    const tkPrice = document.getElementById('tk-price');
+    tkPrice.textContent = price;
+    tkPrice.className = chClass === 'green' ? 'up' : 'dn';
+    document.getElementById('tk-vol').textContent = vol24;
+    document.getElementById('tk-liq').textContent = liq;
+    const tkCh = document.getElementById('tk-ch');
+    tkCh.textContent = ch24 != null ? chSign+ch24.toFixed(2)+'%' : '—';
+    tkCh.className = chClass === 'green' ? 'up' : 'dn';
+    document.getElementById('tk-txn').textContent = txns ? fmtNum(txns) : '—';
+
+    // duplicate ticker
+    const tk = document.getElementById('tk');
+    tk.innerHTML += tk.innerHTML;
+  } catch(e) { console.warn('dex err', e); }
+}
+
+// ── TONVIEWER HOLDERS ──
+const TOKEN_ADDR = 'EQAOsNfmcHX5-HO3a60scVYdN-DdHGkFv1vwAS5G3CEhWj61';
+async function loadHolders() {
+  try {
+    const r = await fetch(`https://tonapi.io/v2/jettons/${TOKEN_ADDR}`);
+    const d = await r.json();
+    const holders = d.holders_count ?? d.holdersCount ?? null;
+    const el = document.getElementById('m-holders');
+    if(holders !== null) {
+      el.textContent = fmtNum(holders);
+    } else {
+      el.textContent = '—';
+    }
+    // also update sub
+    const sub = document.getElementById('m-holders-sub');
+    if(sub && d.total_supply) {
+      const supply = (parseInt(d.total_supply) / 1e9).toFixed(0);
+      sub.textContent = 'Supply: ' + Number(supply).toLocaleString();
+    }
+  } catch(e) {
+    document.getElementById('m-holders').textContent = '—';
+    console.warn('holders err', e);
+  }
+}
+
+// ── INIT ──
+loadDex();
+loadHolders();
+// refresh every 30s
+setInterval(loadDex, 30000);
+setInterval(loadHolders, 60000);
+
+// ── SCROLL REVEAL ──
+const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.08});
+document.querySelectorAll('.rev,.rev-l,.rev-r').forEach(el=>io.observe(el));
+
+// ── COPY CONTRACT ──
+function copyCA(el){
+  navigator.clipboard.writeText('EQAOsNfmcHX5-HO3a60scVYdN-DdHGkFv1vwAS5G3CEhWj61').then(()=>{
+    const old=el.innerHTML;
+    el.style.borderColor='var(--green)';
+    el.innerHTML='<span style="color:var(--green);font-weight:700;font-size:14px">✅ Copied!</span>';
+    setTimeout(()=>{el.innerHTML=old;el.style.borderColor=''},2200);
+  });
+}
+</script>
+</body>
+</html>
